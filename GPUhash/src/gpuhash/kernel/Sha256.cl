@@ -64,7 +64,7 @@ kernel void sha256Kernel (global uint *data_info, global char *data, global uint
     }; // 64 32-bit constants
     
     len = data_info[2]; // Data string length
-    N = len%64>=56?2:1 + len/64; // (l+1+k)%512=448, add one 1 and k 0 after l and extra 64 for l
+    N = ( len%64>=56?2:1 ) + len/64; // (l+1+k)%512=448, add one 1 and k 0 after l and extra 64 for l
     // Setting H0(0)-H7(0)
     Hash[0 + origin] = H0;
     Hash[1 + origin] = H1;
